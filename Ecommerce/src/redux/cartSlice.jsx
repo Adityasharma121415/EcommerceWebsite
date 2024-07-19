@@ -21,6 +21,10 @@ export const cartSlice = createSlice({
                 return item;
             });
         },
+        clearCart() {
+            localStorage.removeItem('cart');
+            return [];
+        },
         decrementQuantity: (state, action) => {
             state = state.map(item => {
                 if (item.quantity !== 1) {
@@ -36,6 +40,6 @@ export const cartSlice = createSlice({
 })
 
 
-export const { addToCart, deleteFromCart, incrementQuantity, decrementQuantity } = cartSlice.actions
+export const { addToCart, deleteFromCart, incrementQuantity, decrementQuantity, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

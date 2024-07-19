@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
 import { Trash } from 'lucide-react'
-import { decrementQuantity, deleteFromCart, incrementQuantity } from "../../redux/cartSlice";
+import { decrementQuantity, deleteFromCart, incrementQuantity, clearCart } from "../../redux/cartSlice";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import BuyNowModal from "../../components/buyNowModal/BuyNowModal";
 import { Navigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
-
+    const navigate= useNavigate();
     const deleteCart = (item) => {
         dispatch(deleteFromCart(item));
         toast.success("Delete cart")
@@ -89,7 +90,9 @@ const CartPage = () => {
                 pincode: "",
                 mobileNumber: "",
             })
+            dispatch(clearCart()); 
             toast.success("Order Placed Successfull")
+            navigate('/');
         } catch (error) {
             console.log(error)
         }

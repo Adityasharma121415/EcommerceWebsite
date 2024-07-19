@@ -13,7 +13,6 @@ function HomePage() {
         <Category/>
         <HomePageProductCard/>
         <Track/>
-        <Testimonial/>
     </Layout>
   )
 }

@@ -4,6 +4,7 @@ import OrderDetail from "../../components/admin/OrderDetail";
 import UserDetail from "../../components/admin/UserDetail";
 import { useContext } from "react";
 import myContext from "../../context/myContext";
+import Layout from "../../components/layout/Layout";
 
 const AdminDashboard = () => {
 
@@ -13,7 +14,9 @@ const AdminDashboard = () => {
 
 
     return (
-        <div>
+
+        <Layout>
+                <div>
             {/* Top */}
             <div className="top mb-5 px-5 mt-5">
                 <div className=" bg-blue-300 py-5 border border-black rounded-lg">
@@ -146,6 +149,8 @@ const AdminDashboard = () => {
                 </div>
             </div>
         </div>
+        </Layout>
+        
     );
 }
 
