@@ -53,11 +53,11 @@ const Navbar = () => {
             </li>}
             
             {/* Cart */}
-            {user?.role==="user" ? <li>
+            <li>
                 <Link to={'/cart'}>
                     Cart [{cartItems.length}]
                 </Link>
-            </li>:""}
+            </li>
         </ul>
     )
     return (
